@@ -527,7 +527,73 @@ h3 {
   background: var(--color-primary-soft);
 }
 
-/* Línea de cálculo */
+/* ---------- Combobox (autocompletado) ---------- */
+
+.combobox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.combobox-input-wrap {
+  position: relative;
+}
+
+.combobox-input-wrap .input.has-clear {
+  padding-right: 34px;
+}
+
+.combobox-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  max-height: 260px;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  list-style: none;
+  padding: 4px;
+  margin: 0;
+}
+
+.combobox-item {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.combobox-item.highlight,
+.combobox-item:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.combobox-clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--text-soft);
+  cursor: pointer;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.combobox-clear:hover {
+  color: var(--color-primary);
+}
+
+/* ---------- Línea de cálculo ---------- */
 .line {
   border: 1px solid var(--border);
   border-radius: var(--radius);

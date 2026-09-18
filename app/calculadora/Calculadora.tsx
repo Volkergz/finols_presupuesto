@@ -10,6 +10,7 @@ import {
 import { formatCLP } from '@/lib/format';
 import type { LineaCalculo } from '@/lib/types';
 import { crearPresupuesto, actualizarPresupuesto } from './actions';
+import Combobox from '@/components/Combobox';
 
 export interface CatPrenda {
   id: number;
@@ -171,7 +172,7 @@ export default function Calculadora({
       {calculadas.map((c, idx) => (
         <div className="line" key={c.linea.id}>
           <div className="line-header">
-            <strong style={{ color: 'var(--color-primary)' }}>Línea {idx + 1}</strong>
+            <strong style={{ color: 'var(--color-primary)' }}>Producto {idx + 1}</strong>
             {lineas.length > 1 && (
               <button
                 type="button"
@@ -185,20 +186,17 @@ export default function Calculadora({
 
           <div className="form-grid">
             <div className="field">
-              <label className="label" htmlFor={`prenda-${c.linea.id}`}>Prenda</label>
-              <select
-                className="select"
+              <Combobox
                 id={`prenda-${c.linea.id}`}
-                value={c.linea.prendaId ?? ''}
-                onChange={(e) => setLinea(c.linea.id, { prendaId: e.target.value ? Number(e.target.value) : null })}
-              >
-                <option value="">— Seleccionar —</option>
-                {prendas.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.tipo} · {p.talla} · {p.color} ({formatCLP(p.costo)})
-                  </option>
-                ))}
-              </select>
+                label="Prenda"
+                value={c.linea.prendaId}
+                options={prendas.map((p) => ({
+                  id: p.id,
+                  label: `${p.tipo} · ${p.talla} · ${p.color} (${formatCLP(p.costo)})`,
+                }))}
+                placeholder="Busca la prenda…"
+                onChange={(prendaid) => setLinea(c.linea.id, { prendaId: prendaid })}
+              />
             </div>
             <div className="field">
               <label className="label" htmlFor={`cantidad-${c.linea.id}`}>Cantidad</label>
@@ -213,20 +211,17 @@ export default function Calculadora({
               />
             </div>
             <div className="field">
-              <label className="label" htmlFor={`diseno-${c.linea.id}`}>Diseño DTF</label>
-              <select
-                className="select"
+              <Combobox
                 id={`diseno-${c.linea.id}`}
-                value={c.linea.disenoId ?? ''}
-                onChange={(e) => setLinea(c.linea.id, { disenoId: e.target.value ? Number(e.target.value) : null })}
-              >
-                <option value="">— Sin diseño —</option>
-                {disenos.map((d) => (
-                  <option key={d.id} value={d.id}>
-                    {d.descripcion} ({formatCLP(d.costoUnitario)})
-                  </option>
-                ))}
-              </select>
+                label="Diseño DTF"
+                value={c.linea.disenoId}
+                options={disenos.map((d) => ({
+                  id: d.id,
+                  label: `${d.descripcion} (${formatCLP(d.costoUnitario)})`,
+                }))}
+                placeholder="Busca el diseño…"
+                onChange={(disenoid) => setLinea(c.linea.id, { disenoId: disenoid })}
+              />
             </div>
           </div>
 

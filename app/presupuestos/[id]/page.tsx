@@ -101,8 +101,8 @@ export default async function PresupuestoDetalle({ params }: Props) {
         <div className="card">
           <div className="card-title">Total</div>
           <div className="sum-row">
-            <span className="muted">Markup aplicado</span>
-            <span>{cfg.markup_pct / 100}</span>
+            <span className="muted">Margen de ganancia</span>
+            <span>{cfg.markup_pct - 100}%</span>
           </div>
           <div className="sum-row">
             <span><strong>Total presupuesto</strong></span>

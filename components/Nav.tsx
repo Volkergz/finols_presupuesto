@@ -18,7 +18,7 @@ export default function Nav() {
   return (
     <header className="topnav">
       <div className="topnav-inner">
-        <span className="brand">Finols</span>
+        <span className="brand">Finol&apos;s</span>
         <nav className="nav-links">
           {LINKS.map((l) => {
             const active = l.href === '/' ? pathname === '/' : pathname.startsWith(l.href);

@@ -3,7 +3,7 @@ import './globals.css';
 import Nav from '@/components/Nav';
 
 export const metadata: Metadata = {
-  title: 'Finols — Gestión y Presupuestación',
+  title: "Finol's — Gestión y Presupuestación",
   description: 'Sistema de gestión y presupuestación para negocio de poleras personalizadas',
 };
 
